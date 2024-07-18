@@ -1,6 +1,4 @@
-# Projeto de Exemplo com ANTLR
-
-Este projeto demonstra o uso do ANTLR para análise léxica, sintática e avaliação de expressões matemáticas simples.
+# Projeto de Compiladores com ANTLR
 
 ## Pré-requisitos
 
