@@ -16,6 +16,13 @@ public interface ExprVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(ExprParser.ProgramContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code Grafo}
+	 * labeled alternative in {@link ExprParser#com}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGrafo(ExprParser.GrafoContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code Vertice}
 	 * labeled alternative in {@link ExprParser#expr}.
 	 * @param ctx the parse tree

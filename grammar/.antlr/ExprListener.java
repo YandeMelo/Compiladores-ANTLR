@@ -1,4 +1,4 @@
-// Generated from grammar/Expr.g4 by ANTLR 4.13.1
+// Generated from c:/Users/Hylzk/Desktop/Outras Coisas/Programas Aulas/Códigos e Projetos/Compiladores/ProjetoCompiladores/grammar/Expr.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -16,18 +16,6 @@ public interface ExprListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitProgram(ExprParser.ProgramContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Grafo}
-	 * labeled alternative in {@link ExprParser#com}.
-	 * @param ctx the parse tree
-	 */
-	void enterGrafo(ExprParser.GrafoContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Grafo}
-	 * labeled alternative in {@link ExprParser#com}.
-	 * @param ctx the parse tree
-	 */
-	void exitGrafo(ExprParser.GrafoContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Vertice}
 	 * labeled alternative in {@link ExprParser#expr}.
