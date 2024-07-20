@@ -1,6 +1,12 @@
 Grafo {
     vertice v1 80 80,
     vertice v2 100 200,
-    dsadasasdadsadsdas
-    aresta e v4 v1
+    aresta a v1 v2,
+    vertice v3 300 300,
+    aresta b v1 v3,
+    vertice v4 300 100,
+    aresta c v2 v4,
+    aresta d v3 v4,
+    aresta e v4 v1,
+    vertice t 400 400
 }

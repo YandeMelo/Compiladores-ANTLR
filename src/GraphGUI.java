@@ -12,10 +12,10 @@ public class GraphGUI extends JFrame {
     private mxGraph graph;
     private Object parent;
 
-    public GraphGUI() {
+    public GraphGUI(int height, int width) {
         setTitle("Grafo");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600);
+        setSize(width, height);
 
         graph = new mxGraph();
         parent = graph.getDefaultParent();

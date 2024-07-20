@@ -29,38 +29,134 @@ public interface ExprListener extends ParseTreeListener {
 	 */
 	void exitGrafo(ExprParser.GrafoContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code Conexao}
+	 * labeled alternative in {@link ExprParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void enterConexao(ExprParser.ConexaoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Conexao}
+	 * labeled alternative in {@link ExprParser#com}.
+	 * @param ctx the parse tree
+	 */
+	void exitConexao(ExprParser.ConexaoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Repetidor}
+	 * labeled alternative in {@link ExprParser#conexaoExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterRepetidor(ExprParser.RepetidorContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Repetidor}
+	 * labeled alternative in {@link ExprParser#conexaoExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitRepetidor(ExprParser.RepetidorContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code GrupoConexao}
+	 * labeled alternative in {@link ExprParser#conexaoExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterGrupoConexao(ExprParser.GrupoConexaoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code GrupoConexao}
+	 * labeled alternative in {@link ExprParser#conexaoExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitGrupoConexao(ExprParser.GrupoConexaoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Switch}
+	 * labeled alternative in {@link ExprParser#conexaoExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterSwitch(ExprParser.SwitchContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Switch}
+	 * labeled alternative in {@link ExprParser#conexaoExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitSwitch(ExprParser.SwitchContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Dispositivos}
+	 * labeled alternative in {@link ExprParser#conexaoExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterDispositivos(ExprParser.DispositivosContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Dispositivos}
+	 * labeled alternative in {@link ExprParser#conexaoExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitDispositivos(ExprParser.DispositivosContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Modem}
+	 * labeled alternative in {@link ExprParser#conexaoExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterModem(ExprParser.ModemContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Modem}
+	 * labeled alternative in {@link ExprParser#conexaoExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitModem(ExprParser.ModemContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code GrupoDispositivos}
+	 * labeled alternative in {@link ExprParser#conexaoDispositivo}.
+	 * @param ctx the parse tree
+	 */
+	void enterGrupoDispositivos(ExprParser.GrupoDispositivosContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code GrupoDispositivos}
+	 * labeled alternative in {@link ExprParser#conexaoDispositivo}.
+	 * @param ctx the parse tree
+	 */
+	void exitGrupoDispositivos(ExprParser.GrupoDispositivosContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Dispositivo}
+	 * labeled alternative in {@link ExprParser#conexaoDispositivo}.
+	 * @param ctx the parse tree
+	 */
+	void enterDispositivo(ExprParser.DispositivoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Dispositivo}
+	 * labeled alternative in {@link ExprParser#conexaoDispositivo}.
+	 * @param ctx the parse tree
+	 */
+	void exitDispositivo(ExprParser.DispositivoContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Vertice}
-	 * labeled alternative in {@link ExprParser#expr}.
+	 * labeled alternative in {@link ExprParser#grafoExpr}.
 	 * @param ctx the parse tree
 	 */
 	void enterVertice(ExprParser.VerticeContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code Vertice}
-	 * labeled alternative in {@link ExprParser#expr}.
+	 * labeled alternative in {@link ExprParser#grafoExpr}.
 	 * @param ctx the parse tree
 	 */
 	void exitVertice(ExprParser.VerticeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Grupo}
-	 * labeled alternative in {@link ExprParser#expr}.
+	 * Enter a parse tree produced by the {@code GrupoGrafo}
+	 * labeled alternative in {@link ExprParser#grafoExpr}.
 	 * @param ctx the parse tree
 	 */
-	void enterGrupo(ExprParser.GrupoContext ctx);
+	void enterGrupoGrafo(ExprParser.GrupoGrafoContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Grupo}
-	 * labeled alternative in {@link ExprParser#expr}.
+	 * Exit a parse tree produced by the {@code GrupoGrafo}
+	 * labeled alternative in {@link ExprParser#grafoExpr}.
 	 * @param ctx the parse tree
 	 */
-	void exitGrupo(ExprParser.GrupoContext ctx);
+	void exitGrupoGrafo(ExprParser.GrupoGrafoContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Aresta}
-	 * labeled alternative in {@link ExprParser#expr}.
+	 * labeled alternative in {@link ExprParser#grafoExpr}.
 	 * @param ctx the parse tree
 	 */
 	void enterAresta(ExprParser.ArestaContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code Aresta}
-	 * labeled alternative in {@link ExprParser#expr}.
+	 * labeled alternative in {@link ExprParser#grafoExpr}.
 	 * @param ctx the parse tree
 	 */
 	void exitAresta(ExprParser.ArestaContext ctx);
