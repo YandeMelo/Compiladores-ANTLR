@@ -2,9 +2,20 @@ grammar Expr;
 
 program: com EOF;
 
-com:  'Grafo' '{' e=grafoExpr ','? '}'                                                                                                   #Grafo
+com:  'Grafo' '{' e=grafoExpr ','? '}'                                                                                                      #Grafo
     | 'Conexão' '(' areaX=NUM 'x' areaY=NUM ')' '{' 'Cabo'? distanciaCabo=NUM? ','? e=conexaoExpr+ ',' d=conexaoDispositivo ','? '}'        #Conexao
+    | 'Rede' '(' areaX=NUM 'x' areaY=NUM ')' '{' e=adicionarCasas+ ',' d=adicionarTorre ','? '}'                                            #Rede
     ;
+
+// TORRE
+adicionarCasas: 'Casa' x=NUM y=NUM                                           #Casa
+    |            e=adicionarCasas ',' e=adicionarCasas                       #GrupoCasas
+    ;
+
+adicionarTorre: 'Torre' alcance=NUM x=NUM y=NUM                              #Torre
+    |           e=adicionarTorre ',' e=adicionarTorre                        #GrupoTorre
+    ;
+////
 
 // MODEM
 conexaoExpr:  'Modem' nome=STRING x=NUM y=NUM                                #Modem

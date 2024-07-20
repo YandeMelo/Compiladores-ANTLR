@@ -10,7 +10,6 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     private Double escalaX = 1.0;
     private Double escalaY = 1.0;
 
-
     private List<Conexao> conexoesList = new ArrayList<Conexao>();
 
     public CustomVisitor() {
@@ -58,10 +57,10 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
         int larguraTela = (int) tela.getWidth();
 
         if (height > alturaTela) {
-            escalaY = height/alturaTela;
+            escalaY = height / alturaTela;
         }
         if (width > larguraTela) {
-            escalaX = width/larguraTela;
+            escalaX = width / larguraTela;
         }
 
         this.grafo = new GraphGUI(alturaTela, larguraTela);
@@ -98,7 +97,7 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
         }
 
         grafo.addVertex(nome, xSwitch, ySwitch, "conexao");
-        grafo.addEdge("Cabo - "+ distancia, nome, conectado);
+        grafo.addEdge("Cabo - " + distancia, nome, conectado);
         conexoesList.add(new Conexao(nome, xSwitch, ySwitch, "switch"));
 
         return visitChildren(ctx);
@@ -123,7 +122,7 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
 
         grafo.addVertex(nome, xRep, yRep, "conexao");
         conexoesList.add(new Conexao(nome, xRep, yRep, "repetidor"));
-        grafo.addEdge("Wi-fi - "+ distancia, nome, conectado);
+        grafo.addEdge("Wi-fi - " + distancia, nome, conectado);
         return visitChildren(ctx);
     }
 
@@ -144,21 +143,21 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
                         distanciaConexao = distanciaCalculada;
                         conexaoNome = conexao.getNome();
                         if (distanciaCalculada <= Long.parseLong(distanciaCabo)) {
-                            nomeAresta = "Cabo ou Wi-fi - "+ distanciaConexao.toString();
+                            nomeAresta = "Cabo ou Wi-fi - " + distanciaConexao.toString();
                         } else {
-                            nomeAresta = "Wi-fi - "+ distanciaConexao.toString();
+                            nomeAresta = "Wi-fi - " + distanciaConexao.toString();
                         }
                         break;
                     case "repetidor":
                         distanciaConexao = distanciaCalculada;
                         conexaoNome = conexao.getNome();
-                        nomeAresta = "Wi-fi - "+ distanciaConexao.toString();
+                        nomeAresta = "Wi-fi - " + distanciaConexao.toString();
                         break;
-                        case "switch":
+                    case "switch":
                         if (distanciaCalculada <= Long.parseLong(distanciaCabo)) {
                             distanciaConexao = distanciaCalculada;
                             conexaoNome = conexao.getNome();
-                            nomeAresta = "Cabo - "+ distanciaConexao.toString();
+                            nomeAresta = "Cabo - " + distanciaConexao.toString();
                         }
                         break;
                     default:
@@ -174,8 +173,8 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     }
 
     public Long calcularDistancia(int x1, int x2, int y1, int y2) {
-        double deltaX = (x1 - x2)*escalaX;
-        double deltaY = (y1 - y2)*escalaY;
+        double deltaX = (x1 - x2) * escalaX;
+        double deltaY = (y1 - y2) * escalaY;
         double distancia = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
         return Math.round(distancia);
     }

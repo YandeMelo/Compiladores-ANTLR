@@ -30,6 +30,41 @@ public interface ExprVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitConexao(ExprParser.ConexaoContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code Rede}
+	 * labeled alternative in {@link ExprParser#com}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRede(ExprParser.RedeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Casa}
+	 * labeled alternative in {@link ExprParser#adicionarCasas}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCasa(ExprParser.CasaContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code GrupoCasas}
+	 * labeled alternative in {@link ExprParser#adicionarCasas}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGrupoCasas(ExprParser.GrupoCasasContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code GrupoTorre}
+	 * labeled alternative in {@link ExprParser#adicionarTorre}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGrupoTorre(ExprParser.GrupoTorreContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Torre}
+	 * labeled alternative in {@link ExprParser#adicionarTorre}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTorre(ExprParser.TorreContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code Repetidor}
 	 * labeled alternative in {@link ExprParser#conexaoExpr}.
 	 * @param ctx the parse tree

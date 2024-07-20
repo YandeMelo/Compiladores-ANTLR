@@ -1,0 +1,10 @@
+Rede (2000 x 2000){
+    Casa 10 10,
+    Casa 20 20,
+    Casa 30 30,
+    Casa 40 40,
+    Casa 50 50,
+    Casa 60 60,
+    Torre 200 100 100,
+    Torre 100 400 400,
+}
