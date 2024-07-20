@@ -77,18 +77,6 @@ public interface ExprListener extends ParseTreeListener {
 	 */
 	void exitSwitch(ExprParser.SwitchContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Dispositivos}
-	 * labeled alternative in {@link ExprParser#conexaoExpr}.
-	 * @param ctx the parse tree
-	 */
-	void enterDispositivos(ExprParser.DispositivosContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Dispositivos}
-	 * labeled alternative in {@link ExprParser#conexaoExpr}.
-	 * @param ctx the parse tree
-	 */
-	void exitDispositivos(ExprParser.DispositivosContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code Modem}
 	 * labeled alternative in {@link ExprParser#conexaoExpr}.
 	 * @param ctx the parse tree

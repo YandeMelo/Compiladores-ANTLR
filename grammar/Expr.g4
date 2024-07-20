@@ -2,8 +2,8 @@ grammar Expr;
 
 program: com EOF;
 
-com:  'Grafo' '{' e=grafoExpr '}'                                                                         #Grafo
-    | 'Conexão' '(' areaX=NUM 'x' areaY=NUM ')' '{' 'Cabo' distanciaCabo=NUM ',' e=conexaoExpr '}'        #Conexao
+com:  'Grafo' '{' e=grafoExpr '}'                                                                                                        #Grafo
+    | 'Conexão' '(' areaX=NUM 'x' areaY=NUM ')' '{' 'Cabo' distanciaCabo=NUM ',' e=conexaoExpr+ ',' d=conexaoDispositivo ','? '}'        #Conexao
     ;
 
 // MODEM
@@ -11,11 +11,10 @@ conexaoExpr:  'Modem' nome=STRING x=NUM y=NUM                                #Mo
     |         'Switch' nome=STRING x=NUM y=NUM conectado=STRING              #Switch
     |         'Repetidor' nome=STRING x=NUM y=NUM conectado=STRING           #Repetidor
     |         e=conexaoExpr ',' e=conexaoExpr                                #GrupoConexao
-    |         e=conexaoDispositivo                                           #Dispositivos
     ;
 
 conexaoDispositivo:  'Dispositivo' nome=STRING x=NUM y=NUM                   #Dispositivo
-    |               e=conexaoDispositivo ',' e=conexaoDispositivo            #GrupoDispositivos
+    |               d=conexaoDispositivo ',' d=conexaoDispositivo            #GrupoDispositivos
 ;
 ////
 

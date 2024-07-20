@@ -4,5 +4,5 @@ Conexão (800 x 800){
     Switch switch 100 100 modem,
     Repetidor repetidor 200 100 modem,
     Dispositivo PC1 50 200,
-    Dispositivo PC2 100 200
+    Dispositivo PC2 100 200,
 }

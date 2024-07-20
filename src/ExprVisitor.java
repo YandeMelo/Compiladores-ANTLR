@@ -51,13 +51,6 @@ public interface ExprVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSwitch(ExprParser.SwitchContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Dispositivos}
-	 * labeled alternative in {@link ExprParser#conexaoExpr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDispositivos(ExprParser.DispositivosContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code Modem}
 	 * labeled alternative in {@link ExprParser#conexaoExpr}.
 	 * @param ctx the parse tree
