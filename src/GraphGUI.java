@@ -35,7 +35,10 @@ public class GraphGUI extends JFrame {
         if (tipo == "conexao") {
             graph.insertVertex(parent, null, vertexLabel, x, y, 60, 25,
                     mxConstants.STYLE_SHAPE + "=" + mxConstants.SHAPE_RECTANGLE);
-        } else {
+        } else if (rootPaneCheckingEnabled) {
+            graph.insertVertex(parent, null, vertexLabel, x, y, 50, 50,
+                    mxConstants.STYLE_SHAPE + "=" + mxConstants.SHAPE_CLOUD);
+        }else {
             graph.insertVertex(parent, null, vertexLabel, x, y, 40, 40,
                     mxConstants.STYLE_SHAPE + "=" + mxConstants.SHAPE_ELLIPSE);
         }

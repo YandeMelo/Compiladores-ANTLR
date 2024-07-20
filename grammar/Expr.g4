@@ -8,11 +8,11 @@ com:  'Grafo' '{' e=grafoExpr ','? '}'                                          
     ;
 
 // TORRE
-adicionarCasas: 'Casa' x=NUM y=NUM                                           #Casa
+adicionarCasas: 'Casa' numeroCasa=NUM x=NUM y=NUM                            #Casa
     |            e=adicionarCasas ',' e=adicionarCasas                       #GrupoCasas
     ;
 
-adicionarTorre: 'Torre' alcance=NUM x=NUM y=NUM                              #Torre
+adicionarTorre: 'Torre' nomeTorre=STRING alcance=NUM x=NUM y=NUM             #Torre
     |           e=adicionarTorre ',' e=adicionarTorre                        #GrupoTorre
     ;
 ////

@@ -1,16 +1,19 @@
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.Toolkit;
-import java.awt.Dimension;
 
 public class CustomVisitor extends ExprBaseVisitor<Object> {
 
     private GraphGUI grafo;
+
     private String distanciaCabo;
     private Double escalaX = 1.0;
     private Double escalaY = 1.0;
-
     private List<Conexao> conexoesList = new ArrayList<Conexao>();
+
+    private int alcanceTorre;
+    private List<Casa> casasList = new ArrayList<Casa>();
 
     public CustomVisitor() {
 
@@ -56,11 +59,15 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
         int alturaTela = (int) tela.getHeight();
         int larguraTela = (int) tela.getWidth();
 
-        if (height > alturaTela) {
+        if (height > alturaTela && height >= 2500) {
             escalaY = height / alturaTela;
+        } else {
+            escalaY = 2.3;
         }
-        if (width > larguraTela) {
+        if (width > larguraTela && height >= 2500) {
             escalaX = width / larguraTela;
+        } else {
+            escalaX = 1.3;
         }
 
         this.grafo = new GraphGUI(alturaTela, larguraTela);
@@ -70,35 +77,35 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     @Override
     public Object visitModem(ExprParser.ModemContext ctx) {
         String nome = ctx.nome.getText();
-        int x = Integer.parseInt(ctx.x.getText());
-        int y = Integer.parseInt(ctx.y.getText());
+        Double x = Integer.parseInt(ctx.x.getText()) / escalaX;
+        Double y = Integer.parseInt(ctx.y.getText()) / escalaY;
 
-        conexoesList.add(new Conexao(nome, x, y, "modem"));
+        conexoesList.add(new Conexao(nome, x.intValue(), y.intValue(), "modem"));
 
-        grafo.addVertex(nome, x, y, "conexao");
+        grafo.addVertex(nome, x.intValue(), y.intValue(), "conexao");
         return visitChildren(ctx);
     }
 
     @Override
     public Object visitSwitch(ExprParser.SwitchContext ctx) {
         String nome = ctx.nome.getText();
-        int xSwitch = Integer.parseInt(ctx.x.getText());
-        int ySwitch = Integer.parseInt(ctx.y.getText());
+        Double xSwitch = Integer.parseInt(ctx.x.getText()) / escalaX;
+        Double ySwitch = Integer.parseInt(ctx.y.getText()) / escalaY;
         String conectado = ctx.conectado.getText();
         String distancia = distanciaCabo;
 
         for (Conexao modem : conexoesList) {
             if (modem.getNome().equals(conectado)) {
                 Conexao modemConectado = modem;
-                distancia = calcularDistancia(xSwitch, modemConectado.getXConexao(), ySwitch,
+                distancia = calcularDistancia(xSwitch.intValue(), modemConectado.getXConexao(), ySwitch.intValue(),
                         modemConectado.getYConexao()).toString();
                 break;
             }
         }
 
-        grafo.addVertex(nome, xSwitch, ySwitch, "conexao");
+        grafo.addVertex(nome, xSwitch.intValue(), ySwitch.intValue(), "conexao");
         grafo.addEdge("Cabo - " + distancia, nome, conectado);
-        conexoesList.add(new Conexao(nome, xSwitch, ySwitch, "switch"));
+        conexoesList.add(new Conexao(nome, xSwitch.intValue(), ySwitch.intValue(), "switch"));
 
         return visitChildren(ctx);
     }
@@ -106,22 +113,22 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     @Override
     public Object visitRepetidor(ExprParser.RepetidorContext ctx) {
         String nome = ctx.nome.getText();
-        int xRep = Integer.parseInt(ctx.x.getText());
-        int yRep = Integer.parseInt(ctx.y.getText());
+        Double xRep = Integer.parseInt(ctx.x.getText()) / escalaX;
+        Double yRep = Integer.parseInt(ctx.y.getText()) / escalaY;
         String conectado = ctx.conectado.getText();
         String distancia = distanciaCabo;
 
         for (Conexao modem : conexoesList) {
             if (modem.getNome().equals(conectado)) {
                 Conexao modemConectado = modem;
-                distancia = calcularDistancia(xRep, modemConectado.getXConexao(), yRep, modemConectado.getYConexao())
+                distancia = calcularDistancia(xRep.intValue(), modemConectado.getXConexao(), yRep.intValue(), modemConectado.getYConexao())
                         .toString();
                 break;
             }
         }
 
-        grafo.addVertex(nome, xRep, yRep, "conexao");
-        conexoesList.add(new Conexao(nome, xRep, yRep, "repetidor"));
+        grafo.addVertex(nome, xRep.intValue(), yRep.intValue(), "conexao");
+        conexoesList.add(new Conexao(nome, xRep.intValue(), yRep.intValue(), "repetidor"));
         grafo.addEdge("Wi-fi - " + distancia, nome, conectado);
         return visitChildren(ctx);
     }
@@ -129,14 +136,14 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     @Override
     public Object visitDispositivo(ExprParser.DispositivoContext ctx) {
         String nome = ctx.nome.getText();
-        int xDisp = Integer.parseInt(ctx.x.getText());
-        int yDisp = Integer.parseInt(ctx.y.getText());
+        Double xDisp = Integer.parseInt(ctx.x.getText()) / escalaX;
+        Double yDisp = Integer.parseInt(ctx.y.getText()) / escalaY;
         Long distanciaConexao = Long.MAX_VALUE;
         String conexaoNome = "";
         String nomeAresta = "";
 
         for (Conexao conexao : conexoesList) {
-            Long distanciaCalculada = calcularDistancia(xDisp, conexao.getXConexao(), yDisp, conexao.getYConexao());
+            Long distanciaCalculada = calcularDistancia(xDisp.intValue(), conexao.getXConexao(), yDisp.intValue(), conexao.getYConexao());
             if (distanciaCalculada < distanciaConexao) {
                 switch (conexao.getTipo()) {
                     case "modem":
@@ -167,8 +174,71 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
             }
         }
 
-        grafo.addVertex(nome, xDisp, yDisp, "");
+        grafo.addVertex(nome, xDisp.intValue(), yDisp.intValue(), "");
+        System.out.println(xDisp);
+        System.out.println(yDisp);
         grafo.addEdge(nomeAresta, nome, conexaoNome);
+        return visitChildren(ctx);
+    }
+    ////
+
+    // REDE
+    @Override
+    public Object visitRede(ExprParser.RedeContext ctx) {
+        Double width = Double.parseDouble(ctx.areaX.getText());
+        Double height = Double.parseDouble(ctx.areaY.getText());
+        
+        Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+        int alturaTela = (int) tela.getHeight();
+        int larguraTela = (int) tela.getWidth();
+
+        if (height > alturaTela && height >= 2000) {
+            escalaY = height / alturaTela;
+        } else {
+            escalaY = 2.3;
+        }
+        if (width > larguraTela && height >= 2000) {
+            escalaX = width / larguraTela;
+        } else {
+            escalaX = 1.3;
+        }
+
+        this.grafo = new GraphGUI(alturaTela, larguraTela);
+        return visitChildren(ctx);
+    }
+
+    @Override
+    public Object visitCasa(ExprParser.CasaContext ctx) {
+        String numero = ctx.numeroCasa.getText();
+
+        Double xCasa = Integer.parseInt(ctx.x.getText()) / escalaX;
+        Double yCasa = Integer.parseInt(ctx.y.getText()) / escalaY;
+
+        casasList.add(new Casa(numero, xCasa.intValue(), yCasa.intValue()));
+
+        grafo.addVertex(numero, xCasa.intValue(), yCasa.intValue(), "");
+        return visitChildren(ctx);
+    }
+    
+    @Override
+    public Object visitTorre(ExprParser.TorreContext ctx) {
+        String nomeTorre = ctx.nomeTorre.getText();
+        Double xTorre = Integer.parseInt(ctx.x.getText()) / escalaX;
+        Double yTorre = Integer.parseInt(ctx.y.getText()) / escalaY;
+        Long distanciaDaCasa;
+        String numeroCasa = "";
+        alcanceTorre = Integer.parseInt(ctx.alcance.getText());
+
+        grafo.addVertex(nomeTorre, xTorre.intValue(), yTorre.intValue(), "torre");
+        for(Casa casa : casasList){
+            distanciaDaCasa = calcularDistancia(xTorre.intValue(), casa.getXCasa(), yTorre.intValue(), casa.getYCasa());
+            numeroCasa = casa.getNumero();
+
+            if (distanciaDaCasa <= alcanceTorre*0.9) {
+                grafo.addEdge(distanciaDaCasa.toString(), nomeTorre , numeroCasa);
+            }
+        }
+
         return visitChildren(ctx);
     }
 
