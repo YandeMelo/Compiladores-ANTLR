@@ -1,4 +1,4 @@
-Conexão (800 x 800){
+Conexão (2000 x 2000){
     Cabo 30,
     Modem modem 20 20,
     Switch switch 400 100 modem,

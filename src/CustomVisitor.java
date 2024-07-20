@@ -1,10 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 
 public class CustomVisitor extends ExprBaseVisitor<Object> {
 
     private GraphGUI grafo;
     private String distanciaCabo;
+    private Double escalaX = 1.0;
+    private Double escalaY = 1.0;
+
 
     private List<Conexao> conexoesList = new ArrayList<Conexao>();
 
@@ -40,15 +45,26 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     // CONEXAO
     @Override
     public Object visitConexao(ExprParser.ConexaoContext ctx) {
-        int width = Integer.parseInt(ctx.areaX.getText());
-        int height = Integer.parseInt(ctx.areaY.getText());
+        Double width = Double.parseDouble(ctx.areaX.getText());
+        Double height = Double.parseDouble(ctx.areaY.getText());
         if (ctx.distanciaCabo == null) {
             distanciaCabo = "100";
         } else {
             distanciaCabo = ctx.distanciaCabo.getText();
         }
-        System.out.println(distanciaCabo);
-        this.grafo = new GraphGUI(width, height);
+
+        Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
+        int alturaTela = (int) tela.getHeight();
+        int larguraTela = (int) tela.getWidth();
+
+        if (height > alturaTela) {
+            escalaY = height/alturaTela;
+        }
+        if (width > larguraTela) {
+            escalaX = width/larguraTela;
+        }
+
+        this.grafo = new GraphGUI(alturaTela, larguraTela);
         return visitChildren(ctx);
     }
 
@@ -158,8 +174,8 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     }
 
     public Long calcularDistancia(int x1, int x2, int y1, int y2) {
-        int deltaX = x1 - x2;
-        int deltaY = y1 - y2;
+        double deltaX = (x1 - x2)*escalaX;
+        double deltaY = (y1 - y2)*escalaY;
         double distancia = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
         return Math.round(distancia);
     }
