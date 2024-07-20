@@ -2,8 +2,8 @@ grammar Expr;
 
 program: com EOF;
 
-com:  'Grafo' '{' e=grafoExpr '}'                                                                                                        #Grafo
-    | 'Conexão' '(' areaX=NUM 'x' areaY=NUM ')' '{' 'Cabo' distanciaCabo=NUM ',' e=conexaoExpr+ ',' d=conexaoDispositivo ','? '}'        #Conexao
+com:  'Grafo' '{' e=grafoExpr ','? '}'                                                                                                   #Grafo
+    | 'Conexão' '(' areaX=NUM 'x' areaY=NUM ')' '{' 'Cabo'? distanciaCabo=NUM? ','? e=conexaoExpr+ ',' d=conexaoDispositivo ','? '}'        #Conexao
     ;
 
 // MODEM

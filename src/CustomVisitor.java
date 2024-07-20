@@ -37,8 +37,12 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     public Object visitConexao(ExprParser.ConexaoContext ctx) {
         int width = Integer.parseInt(ctx.areaX.getText());
         int height = Integer.parseInt(ctx.areaY.getText());
-        distanciaCabo = ctx.distanciaCabo.getText();
-
+        if (ctx.distanciaCabo == null) {
+            distanciaCabo = "20";
+        } else {
+            distanciaCabo = ctx.distanciaCabo.getText();
+        }
+        System.out.println(distanciaCabo);
         this.grafo = new GraphGUI(width, height);
         return visitChildren(ctx);
     }
