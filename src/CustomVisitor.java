@@ -1,7 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomVisitor extends ExprBaseVisitor<Object> {
     
     private GraphGUI grafo;
     private String distanciaCabo;
+
+    private List<Conexao> conexoesList = new ArrayList<Conexao>();
 
     public CustomVisitor() {
         
@@ -52,6 +57,9 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
         String nome = ctx.nome.getText();
         int x = Integer.parseInt(ctx.x.getText());
         int y = Integer.parseInt(ctx.y.getText());
+
+        conexoesList.add(new Conexao(nome, x, y));
+
         grafo.addVertex(nome, x, y);
         return visitChildren(ctx);
     }
@@ -65,6 +73,8 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
         grafo.addVertex(nome, x, y);
         // Ajustar tamanho da linha/cabo
         grafo.addEdge(distanciaCabo, nome, conectado);
+        conexoesList.add(new Conexao(nome, x, y));
+
         return visitChildren(ctx);
     }
 
@@ -75,7 +85,9 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
         int y = Integer.parseInt(ctx.y.getText());
         String conectado = ctx.conectado.getText();
         grafo.addVertex(nome, x, y);
-        // Ajustar tamanho da linha/cabo
+
+        conexoesList.add(new Conexao(nome, x, y));
+    
         grafo.addEdge(distanciaCabo, nome, conectado);
         return visitChildren(ctx);
     }
@@ -83,9 +95,28 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     @Override
     public Object visitDispositivo(ExprParser.DispositivoContext ctx){
         String nome = ctx.nome.getText();
-        int x = Integer.parseInt(ctx.x.getText());
-        int y = Integer.parseInt(ctx.y.getText());
-        grafo.addVertex(nome, x, y);
+        int xDisp = Integer.parseInt(ctx.x.getText());
+        int yDisp = Integer.parseInt(ctx.y.getText());
+        Long distanciaModem = Long.MAX_VALUE;
+        String modemNome = "";
+        grafo.addVertex(nome, xDisp, yDisp);
+
+        for (Conexao modem : conexoesList) {
+            Long distanciaCalculada = calcularDistancia(xDisp, modem.getXConexao(), yDisp, modem.getYConexao());
+            if (distanciaCalculada < distanciaModem) {
+                distanciaModem = distanciaCalculada;
+                modemNome = modem.getNome();
+            }
+        }
+        
+        grafo.addEdge(distanciaModem.toString(), nome, modemNome);
         return visitChildren(ctx);
+    }
+
+    public Long calcularDistancia(int x1, int x2, int y1, int y2) {
+        int deltaX = x1 - x2;
+        int deltaY = y1 - y2;
+        double distancia = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        return Math.round(distancia);
     }
 }
