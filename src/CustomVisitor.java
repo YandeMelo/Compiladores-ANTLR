@@ -67,13 +67,22 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     @Override
     public Object visitSwitch(ExprParser.SwitchContext ctx) {
         String nome = ctx.nome.getText();
-        int x = Integer.parseInt(ctx.x.getText());
-        int y = Integer.parseInt(ctx.y.getText());
+        int xSwitch = Integer.parseInt(ctx.x.getText());
+        int ySwitch = Integer.parseInt(ctx.y.getText());
         String conectado = ctx.conectado.getText();
-        grafo.addVertex(nome, x, y);
-        // Ajustar tamanho da linha/cabo
-        grafo.addEdge(distanciaCabo, nome, conectado);
-        conexoesList.add(new Conexao(nome, x, y));
+        String distancia = distanciaCabo;
+        
+        for (Conexao modem : conexoesList) {
+            if (modem.getNome().equals(conectado)) {
+                Conexao modemConectado = modem;
+                distancia = calcularDistancia(xSwitch, modemConectado.getXConexao(), ySwitch, modemConectado.getYConexao()).toString();
+                break;
+            }
+        }
+        
+        grafo.addVertex(nome, xSwitch, ySwitch);
+        grafo.addEdge(distancia, nome, conectado);
+        conexoesList.add(new Conexao(nome, xSwitch, ySwitch));
 
         return visitChildren(ctx);
     }
@@ -81,14 +90,22 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
     @Override
     public Object visitRepetidor(ExprParser.RepetidorContext ctx) {
         String nome = ctx.nome.getText();
-        int x = Integer.parseInt(ctx.x.getText());
-        int y = Integer.parseInt(ctx.y.getText());
+        int xRep = Integer.parseInt(ctx.x.getText());
+        int yRep = Integer.parseInt(ctx.y.getText());
         String conectado = ctx.conectado.getText();
-        grafo.addVertex(nome, x, y);
-
-        conexoesList.add(new Conexao(nome, x, y));
+        String distancia = distanciaCabo;
     
-        grafo.addEdge(distanciaCabo, nome, conectado);
+        for (Conexao modem : conexoesList) {
+            if (modem.getNome().equals(conectado)) {
+                Conexao modemConectado = modem;
+                distancia = calcularDistancia(xRep, modemConectado.getXConexao(), yRep, modemConectado.getYConexao()).toString();
+                break;
+            }
+        }
+
+        grafo.addVertex(nome, xRep, yRep);
+        conexoesList.add(new Conexao(nome, xRep, yRep));
+        grafo.addEdge(distancia, nome, conectado);
         return visitChildren(ctx);
     }
 
