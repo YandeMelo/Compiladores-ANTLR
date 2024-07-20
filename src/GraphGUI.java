@@ -29,11 +29,16 @@ public class GraphGUI extends JFrame {
         setVisible(true);
     }
 
-    public void addVertex(String vertexLabel, int x, int y) {
+    public void addVertex(String vertexLabel, int x, int y, String tipo) {
         graph.getModel().beginUpdate();
         try {
+        if (tipo == "conexao") {
+            graph.insertVertex(parent, null, vertexLabel, x, y, 60, 25,
+                    mxConstants.STYLE_SHAPE + "=" + mxConstants.SHAPE_RECTANGLE);
+        } else {
             graph.insertVertex(parent, null, vertexLabel, x, y, 40, 40,
                     mxConstants.STYLE_SHAPE + "=" + mxConstants.SHAPE_ELLIPSE);
+        }
         } finally {
             graph.getModel().endUpdate();
         }

@@ -29,7 +29,7 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
         String nome = ctx.nome.getText();
         int x = Integer.parseInt(ctx.x.getText());
         int y = Integer.parseInt(ctx.y.getText());
-        grafo.addVertex(nome, x, y);
+        grafo.addVertex(nome, x, y, "");
         return visitChildren(ctx);
     }
 
@@ -76,7 +76,7 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
 
         conexoesList.add(new Conexao(nome, x, y, "modem"));
 
-        grafo.addVertex(nome, x, y);
+        grafo.addVertex(nome, x, y, "conexao");
         return visitChildren(ctx);
     }
 
@@ -97,7 +97,7 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
             }
         }
 
-        grafo.addVertex(nome, xSwitch, ySwitch);
+        grafo.addVertex(nome, xSwitch, ySwitch, "conexao");
         grafo.addEdge("Cabo - "+ distancia, nome, conectado);
         conexoesList.add(new Conexao(nome, xSwitch, ySwitch, "switch"));
 
@@ -121,7 +121,7 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
             }
         }
 
-        grafo.addVertex(nome, xRep, yRep);
+        grafo.addVertex(nome, xRep, yRep, "conexao");
         conexoesList.add(new Conexao(nome, xRep, yRep, "repetidor"));
         grafo.addEdge("Wi-fi - "+ distancia, nome, conectado);
         return visitChildren(ctx);
@@ -168,7 +168,7 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
             }
         }
 
-        grafo.addVertex(nome, xDisp, yDisp);
+        grafo.addVertex(nome, xDisp, yDisp, "");
         grafo.addEdge(nomeAresta, nome, conexaoNome);
         return visitChildren(ctx);
     }
