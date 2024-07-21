@@ -1,0 +1,6 @@
+Rede (1920 x 1080){
+    Casa 1 0 0,
+    Casa 2 1920 1080,
+    Torre Torre2 800 1000 1000,
+    Torre Torre3 1800 1800 1010,
+}

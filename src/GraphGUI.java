@@ -1,7 +1,10 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.util.mxConstants;
@@ -11,7 +14,7 @@ public class GraphGUI extends JFrame {
 
     private mxGraph graph;
     private Object parent;
-
+    private mxGraphComponent graphComponent;
     public GraphGUI(int height, int width) {
         setTitle("Grafo");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,15 +23,28 @@ public class GraphGUI extends JFrame {
         graph = new mxGraph();
         parent = graph.getDefaultParent();
 
-        mxGraphComponent graphComponent = new mxGraphComponent(graph);
-
+        graphComponent = new mxGraphComponent(graph);
+    
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(graphComponent, BorderLayout.CENTER);
+        JToolBar toolBar = new JToolBar();
+        toolBar.add(new AbstractAction("Zoom In") {
+            public void actionPerformed(ActionEvent e) {
+                graphComponent.zoomIn();
+            }
+        });
+        toolBar.add(new AbstractAction("Zoom Out") {
+            public void actionPerformed(ActionEvent e) {
+                graphComponent.zoomOut();
+            }
+        });
 
+        panel.add(toolBar, BorderLayout.NORTH);
         getContentPane().add(panel);
         setVisible(true);
+        System.out.println("JFrame Size: " + getSize());
     }
-
+    
     public void addVertex(String vertexLabel, int x, int y, String tipo) {
         graph.getModel().beginUpdate();
         try {
@@ -45,6 +61,7 @@ public class GraphGUI extends JFrame {
         } finally {
             graph.getModel().endUpdate();
         }
+        System.out.println("Adding vertex " + vertexLabel + " at (" + x + ", " + y + ")");
     }
 
     public void addEdge(String edgeLabel, String sourceVertex, String targetVertex) {

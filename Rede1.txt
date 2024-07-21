@@ -1,4 +1,4 @@
-Rede (2500 x 2500){
+Rede (2400 x 2400){
     Casa 1 10 10,
     Casa 2 50 30,
     Casa 3 90 60,
@@ -41,5 +41,5 @@ Rede (2500 x 2500){
     Casa 40 1570 1170,
     Torre Torre1 800 100 100,
     Torre Torre2 800 1000 1000,
-    Torre Torre3 1800 2450 2450,
+    Torre Torre3 1800 2300 2300,
 }
