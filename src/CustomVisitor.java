@@ -43,7 +43,8 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
         grafo.addEdge(nomeAresta, verticeInicio, verticeFinal);
         return visitChildren(ctx);
     }
-
+    ////
+    
     // CONEXAO
     @Override
     public Object visitConexao(ExprParser.ConexaoContext ctx) {
@@ -175,8 +176,6 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
         }
 
         grafo.addVertex(nome, xDisp.intValue(), yDisp.intValue(), "");
-        System.out.println(xDisp);
-        System.out.println(yDisp);
         grafo.addEdge(nomeAresta, nome, conexaoNome);
         return visitChildren(ctx);
     }
@@ -193,12 +192,12 @@ public class CustomVisitor extends ExprBaseVisitor<Object> {
         int larguraTela = (int) tela.getWidth();
 
         if (height > alturaTela && height >= 2000) {
-            escalaY = height / alturaTela;
+            escalaY = (height / alturaTela)+0.2;
         } else {
             escalaY = 2.3;
         }
         if (width > larguraTela && height >= 2000) {
-            escalaX = width / larguraTela;
+            escalaX = (width / larguraTela)+0.1;
         } else {
             escalaX = 1.3;
         }

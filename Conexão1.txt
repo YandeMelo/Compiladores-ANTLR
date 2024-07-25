@@ -1,8 +1,10 @@
 Conexão (2200 x 2200){
-    Cabo 30,
+    Cabo 300,
     Modem modem 20 20,
     Switch switch 400 100 modem,
     Repetidor repetidor 200 100 modem,
     Dispositivo PC1 50 180,
-    Dispositivo PC2 2100 2100,
+    Dispositivo PC2 500 200,
+    Dispositivo PC3 150 150,
+    Dispositivo PC3 2200 2200,
 }

@@ -2,7 +2,7 @@ import org.antlr.v4.runtime.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        String filename = "Rede1.txt";
+        String filename = "Conexão1.txt";
         CharStream input = CharStreams.fromFileName(filename);
         ExprLexer lexer = new ExprLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
