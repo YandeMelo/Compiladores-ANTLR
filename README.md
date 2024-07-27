@@ -15,6 +15,7 @@ O projeto conta com 3 possibilidades:
 
 3- Criação de um modelo mapeado em larga escala, agora, para as conexões que uma Torre de Rede consegue ter, dentro de uma determinada área, assim como, dependendo do seu alcance. Nesse modelo, serão fornecidas a área, as localizações das casas e locais que desejam uma conexão, também, o alcance e localização de cada Torre de Rede. Após os dados fornecidos, o sistema será responsável por gerar o modelo, informando todas as casas que cada Torre de Rede conseguirá alcançar e se conectar, tratando também, de uma margem de erro de 10%, devido a possíveis questões climáticas, de relevo e interferências.
 
+Observação: Como o projeto conta com uma Interface Gráfica, não será possível executar pelo Codespace.
 ## Instalação e Configuração
 
 - Java JDK (versão recomendada: 21)
@@ -22,7 +23,7 @@ O projeto conta com 3 possibilidades:
 
 1. **Configuração do ANTLR:**
 
-Certifique-se de ter o ANTLR instalado. 
+Certifique-se de ter o ANTLR instalado e instalar as extensões do Java e ANTLR na sua IDE. 
 ```bash
 pip install antlr4-tools
 ```
