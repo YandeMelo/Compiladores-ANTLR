@@ -43,7 +43,7 @@ java -jar lib/antlr.jar -o src -listener -visitor grammar/Expr.g4
 ```
 Isso criará classes de visitor e listener necessárias para percorrer a árvore de parsing gerada pelo ANTLR.
 
-4. **Como utilizar:**
+## Como utilizar
 O projeto conta com 3 funções na linguagem, 1 para cada possibilidade citada acima. Para executar o código, basta escolher o nome do arquivo .txt a ser executado na Main e, em seguida, executar a Main.
 
 ```java
