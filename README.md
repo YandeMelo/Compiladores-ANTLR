@@ -5,7 +5,7 @@ Grupo:
 - Yan Monteiro de Melo
 
 ## Descrição
-O projeto tem como objetivo auxiliar no mapeamento de conexões de dispositivos e na avaliação das melhores conexões, baseadas nos pontos de acesso disponíveis, comparando suas distâncias. Assim como, na descoberta e mapeamento de todas as possíveis conexoes que uma Torre de Rede consegue ter dentro de uma área. Esse tema foi definido com o objetivo de auxiliar e aumentar a eficiência de empresas de rede e pontos de acesso, na hora de simular e projetar as conexões de determinado local. O projeto tem como base a geração de Grafos em uma interface, para que uma melhor vizualização seja possível.
+O projeto tem como objetivo auxiliar no mapeamento de conexões de dispositivos e na avaliação das melhores conexões, baseadas nos pontos de acesso disponíveis, comparando suas distâncias. Assim como, na descoberta e mapeamento de todas as possíveis conexões que uma Torre de Rede consegue ter dentro de uma área. Esse tema foi definido com o objetivo de auxiliar e aumentar a eficiência de empresas de rede e pontos de acesso, na hora de simular e projetar as conexões de determinado local. O projeto tem como base a geração de Grafos em uma interface, para que uma melhor vizualização seja possível.
 
 O projeto conta com 3 possibilidades: 
 
@@ -46,7 +46,7 @@ Isso criará classes de visitor e listener necessárias para percorrer a árvore
 4. **Como utilizar:**
 O projeto conta com 3 funções na linguagem, 1 para cada possibilidade citada acima. Para executar o código, basta escolher o nome do arquivo .txt a ser executado na Main e, em seguida, executar a Main.
 
-```bash
+```java
 String filename = "NomeDoArquivo.txt";
 ```
 
