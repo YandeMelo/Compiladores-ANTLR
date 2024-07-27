@@ -1,0 +1,9 @@
+Conexão (150 x 200){
+    Modem modem 20 20,
+    Switch switch 30 50 modem,
+    Dispositivo PC1 30 3,
+    Dispositivo PC2 50 50,
+    Dispositivo PC3 20 45,
+    Dispositivo PC4 5 100,
+    Dispositivo PC5 100 10,
+}

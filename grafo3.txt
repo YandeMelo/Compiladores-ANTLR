@@ -1,0 +1,22 @@
+Grafo {
+    vertice v1 100 80,
+    vertice v2 100 200,
+    vertice v3 100 500,
+    vertice v4 100 800,
+    vertice v5 800 80,
+    vertice v6 800 200,
+    vertice v7 800 500,
+    vertice v8 800 800,
+    aresta a v1 v2,
+    aresta b v1 v5,
+    aresta c v1 v6,
+    aresta d v1 v7,
+    aresta e v1 v8,
+    aresta f v8 v4,
+    aresta g v8 v3,
+    aresta h v8 v2,
+    aresta i v5 v3,
+    aresta j v6 v3,
+    aresta k v7 v8,
+
+}

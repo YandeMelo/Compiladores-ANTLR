@@ -1,0 +1,13 @@
+Conexão (50 x 50){
+    Cabo 10,
+    Modem modem 25 25,
+    Switch switch 30 20 modem,
+    Switch switch2 10 20 modem,
+    Repetidor repetidor 25 40 modem,
+    Dispositivo PC1 35 15,
+    Dispositivo PC2 10 10,
+    Dispositivo PC3 25 10,
+    Dispositivo PC4 45 15,
+    Dispositivo PC5 10 30,
+    Dispositivo PC6 10 45,
+}

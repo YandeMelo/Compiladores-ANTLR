@@ -8,5 +8,4 @@ Grafo {
     aresta c v2 v4,
     aresta d v3 v4,
     aresta e v4 v1,
-    vertice t 400 400
 }

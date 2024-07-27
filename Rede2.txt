@@ -1,0 +1,22 @@
+Rede (1000 x 1000){
+    Casa 1 10 10,
+    Casa 2 100 100,
+    Casa 3 200 150,
+    Casa 4 350 10,
+    Casa 5 800 800,
+    Casa 6 654 123,
+    Casa 7 987 789,
+    Casa 8 200 200,
+    Casa 9 10 1000,
+    Casa 10 10 10,
+    Casa 11 500 1000,
+    Casa 12 300 1000,
+    Casa 13 900 700,
+    Casa 14 700 70,
+    Casa 15 800 700,
+    Casa 16 300 700,
+
+    Torre Torre1 500 200 500,
+    Torre Torre2 500 800 500,
+    Torre Torre3 500 1000 500,
+}
