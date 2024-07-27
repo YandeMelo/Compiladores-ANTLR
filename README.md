@@ -50,7 +50,7 @@ O projeto conta com 3 funções na linguagem, 1 para cada possibilidade citada a
 String filename = "NomeDoArquivo.txt";
 ```
 
-*1- Para a geração de Grafos:*
+*1- Para a geração de Grafos:*                                                                                                                                                                                                                                                 
 Observação: 
 - Coordenadas baseadas na resolução da tela.
 - Exemplos de modelos estão nos arquivos .txt: grafo1.txt, grafo2.txt, grafo3.txt
@@ -62,7 +62,7 @@ Grafo {
 }
 ```
 
-*2- Para o mapeamento de Conexões:*
+*2- Para o mapeamento de Conexões:*                                                                                                                                                                                                                                            
 Observação: 
 - Coordenadas baseadas dentro da área definida.
 - Exemplos de modelos estão nos arquivos .txt: Conexão1.txt, Conexão2.txt, Conexão3.txt
@@ -76,7 +76,7 @@ Conexão (ÁreaX x ÁreaY){
 }
 ```
 
-*2- Para o mapeamento de Torres de Rede:*
+*2- Para o mapeamento de Torres de Rede:*                                                                                                                                                                                                                                      
 Observação: 
 - Coordenadas baseadas dentro da área definida.
 - Exemplos de modelos estão nos arquivos .txt: Rede1.txt, Rede2.txt
