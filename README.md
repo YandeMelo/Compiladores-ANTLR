@@ -62,6 +62,8 @@ Grafo {
     aresta NomeDaAresta VerticeInicial VerticeFinal,
 }
 ```
+Resultado de exemplo:
+![Grafo](https://cdn.discordapp.com/attachments/931984117652946988/1267188347034402897/image.png?ex=66a7e09d&is=66a68f1d&hm=0bf8c52bc0fdb0516bce2b38e853cde97af5a8fb0837e3359e1d32df4a89ee87&)
 
 *2- Para o mapeamento de Conexões:*                                                                                                                                                                                                                                            
 Observação: 
@@ -76,8 +78,10 @@ Conexão (ÁreaX x ÁreaY){
     Dispositivo NomeDoDispositivo CoordenadaX CoordenadaY,
 }
 ```
+Resultado de exemplo:
+![Conexão](https://media.discordapp.net/attachments/931984117652946988/1267188486570512416/image.png?ex=66a7e0be&is=66a68f3e&hm=c8d79bc0ab1e6c95e64d35d274649c888f380d11c5c3bee881d3d207e1d28734&=&format=webp&quality=lossless)
 
-*2- Para o mapeamento de Torres de Rede:*                                                                                                                                                                                                                                      
+*3- Para o mapeamento de Torres de Rede:*                                                                                                                                                                                                                                      
 Observação: 
 - Coordenadas baseadas dentro da área definida.
 - Exemplos de modelos estão nos arquivos .txt: Rede1.txt, Rede2.txt
@@ -87,3 +91,5 @@ Rede (ÁreaX x ÁreaY){
     Torre NomeDaTorre AlcanceDaTorre CoordenadaX CoordenadaY,
 }
 ```
+Resultado de exemplo:
+![Redes](https://cdn.discordapp.com/attachments/931984117652946988/1267188609585254452/image.png?ex=66a7e0db&is=66a68f5b&hm=2720ee553d1301f9af51396e6828da63265a7bdedfceb3508f0a72af7fe19ce5&)
